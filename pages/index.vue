@@ -1,26 +1,15 @@
 <template >
-  <header >
-    <div >LOGO</div >
-    <p >Art from the refugee camp to you</p >
-    <nav >
-      <ul >
-        <VList :items="pageSections" v-slot="{item}">
-          <a :href="item.id" >{{ item.label }}</a >
-        </VList>
-      </ul >
-    </nav >
-  </header >
-  <main>
-     <section :id="homeSection.id" >
+
+     <PageSection :id="homeSection.id" >
        <h1>HERO BANNER</h1>
        <div>
          <VList :items="socialMedias" v-slot="{item}">
              <a :href="item.url" >{{ item.label }}</a >
          </VList>
        </div>
-     </section>
+     </PageSection>
 
-    <section :id="ourTeamSection.id">
+    <PageSection :id="ourTeamSection.id">
       <h1>{{ ourTeamSection.label }}</h1>
       <p>
         Camps Breakerz is a dance team that was established back in 2004 to represent the Palestinian people and their continuous struggle.
@@ -49,10 +38,9 @@
         You can help and save humanity.
       </p>
       <p>If you are interested in donating, please contact us on either Instagram or email us on campsbreakers@gmail.com</p>
+    </PageSection>
 
-    </section>
-
-    <section :id="ourTeamSection.id">
+    <PageSection :id="ourTeamSection.id">
       <h1>{{ ourTeamSection.label }}</h1>
       <p>Join the board of CB Crew to embrace dancing in Palestine</p>
       <div>
@@ -61,15 +49,14 @@
           <p>{{ slotProps.item.role}}</p>
         </VList>
       </div>
-    </section>
+    </PageSection>
 
-    <section :id="contactSection.id">
+    <PageSection :id="contactSection.id">
       <h1>{{ contactSection.label }}</h1>
       <form >
         CONTACT FORM
       </form >
-    </section>
-  </main>
+    </PageSection>
   <footer>
     <button>
       <a href="#" >Top</a >
@@ -80,74 +67,10 @@
 </template >
 
 <script setup lang="ts" >
-interface PageSection {
-  label: string
-  id: string
-}
-type availableLogos = 'facebook' | 'youtube' | 'instagram' | 'gmail' | '#'
-interface SocialMedia {
-  label: string
-  url: string
-  logo: availableLogos
-}
+import { useSocialMediaLinks } from "~/composables/useSocialMediaLinks";
 
-interface TeamMember {
-  name: string
-  socialMedias: SocialMedia[]
-  role: string
-  image: string
-}
-
-const homeSection: PageSection = { label: 'Home', id: '#' }
-const danceTherapySection: PageSection ={ label: 'Dance therapy for Gaza children', id: '#dance-therapy-for-children' }
-const ourTeamSection: PageSection = { label: 'Other Team', id: '#our-team' }
-const contactSection: PageSection = { label: 'Contact', id: '#contact' }
-const pageSections: PageSection[] = [homeSection, danceTherapySection, ourTeamSection, contactSection];
-
-const youtube: SocialMedia = { label: 'Youtube', url: '#', logo: '#'}
-const instagram: SocialMedia = { label: 'Instagram', url: '#', logo: '#'}
-const facebook: SocialMedia = { label: 'Facebook', url: '#', logo: '#'}
-const socialMedias :SocialMedia[] = [youtube, instagram, facebook]
-
-const teamMembers : TeamMember[]= [{
-  name: 'John Doe',
-  socialMedias: [{
-    label: 'youtube',
-    url: '#',
-    logo: '#'
-  }],
-  role: 'Founder',
-  image: '#'
-},
-{
-  name: 'John Doe',
-  socialMedias: [{
-    label: 'youtube',
-    url: '#',
-    logo: '#'
-  }],
-  role: 'Founder',
-  image: '#'
-},
-{
-  name: 'John Doe',
-  socialMedias: [{
-    label: 'youtube',
-    url: '#',
-    logo: '#'
-  }],
-  role: 'Founder',
-  image: '#'
-}]
-
-
-
-
+const {contactSection, homeSection, ourTeamSection, danceTherapySection} = useContent()
+const  teamMembers = useTeamMembers()
+const {socialMedias} = useSocialMediaLinks()
 
 </script >
-<style scoped >
-section {
-  height: 100vh;
-  width: 100vw;
-}
-</style >
