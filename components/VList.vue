@@ -1,21 +1,22 @@
 <template >
-  <ul
-    class="flex"
-    :class="cn(classes )"
-  >
-    <li v-for="(item, key) in items" :key="key" >
-      <slot name="default" :item="item" />
-    </li >
-  </ul >
+	<ul
+		:class="cn(classes )"
+		class="flex"
+	>
+		<li v-for="(item, key) in items" :key="key" >
+			<slot :item="item" name="default" />
+		</li >
+	</ul >
 </template >
-<script setup lang="ts" i generic="T" >
-import { cn } from "@/lib/utils.js";
+<script generic="T" i lang="ts" setup >
+import {cn} from "@/lib/utils.js"
 
 
 interface ListProps<T> {
-  items: T[]
-  model: T
-  classes: string
+	items: T[]
+	model: T
+	classes?: string
 }
-  defineProps<ListProps<T>>()
+
+defineProps<ListProps<T>>()
 </script >
