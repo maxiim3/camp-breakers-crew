@@ -1,17 +1,27 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from '@primevue/themes/aura'
+
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon'],
-  shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
-    prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
-    componentDir: './components/ui'
-  }
+	compatibilityDate: "2024-10-20",
+	devtools: {enabled: true},
+	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module"],
+	primevue: {
+		components: {
+			prefix: "Prime",
+		},
+		directives: {
+			prefix: "Prime",
+		},
+		autoImport: true,
+		options: {
+			inputVariant: "filled",
+			theme: {
+			 preset: Aura,
+				options: {
+					prefix: "p",
+					darkModeSelector: "system",
+					cssLayer: false,
+				},
+			},
+		},
+	},
 })

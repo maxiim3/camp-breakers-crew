@@ -3,6 +3,12 @@ export interface PageSection {
     id: string
 }
 
+export type TPage = {
+  pageTitle: string
+  pageSubTitle ?: string
+  pageUrl: string
+}
+
 export type availableLogos = 'facebook' | 'youtube' | 'instagram' | 'gmail' | '#'
 
 export interface SocialMedia {
@@ -16,4 +22,9 @@ export interface TeamMember {
     socialMedias: SocialMedia[]
     role: string
     image: string
+}
+
+export type ListItem = {
+  id: string,
+  label: string
 }

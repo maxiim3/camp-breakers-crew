@@ -9,23 +9,30 @@
 				src="/cb-logo.png" />
 			<em>Art from the refugee camp to you</em>
 		</div>
-		<nav>
+		<nav class="align-center flex flex-col items-center gap-8 lg:flex-row">
 			<VList
-				v-slot="{item}"
-				:items="pageSections"
+				v-slot="{item}: {item: ListItem & {url: string}}"
+				:items="pages"
 				classes="gap-4 flex-col lg:flex-row">
 				<NuxtLink
 					:aria-selected="
-						$router.currentRoute.value.hash
-							? $router.currentRoute.value.hash.includes(item.id)
-							: item.id === 'top'
+						$router.currentRoute.value.path
+							? $router.currentRoute.value.path === item.url
+							: item.url === ''
 					"
-					:href="{path: '/', hash: `#${item.id}`}"
-					class="relative opacity-90 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-cyan-400 after:content-[''] hover:opacity-100 hover:after:scale-x-100 aria-selected:font-bold aria-selected:after:scale-x-100"
+					:href="{path: item.url}"
+					class="relative opacity-90 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-cyan-400 after:content-[''] hover:opacity-100 text-sm hover:after:scale-x-100 aria-selected:font-bold aria-selected:after:scale-x-100"
 					@click="closeMenu">
-					{{ item.label }}
+					{{ $t(item.label) }}
 				</NuxtLink>
 			</VList>
+			<PrimeSelect
+				v-model="$i18n.locale"
+				:options="languages"
+				optionLabel="label"
+				optionValue="value"
+				:placeholder="$t('Select a language')"
+				class="w-full max-w-28 text-xs md:w-56" />
 		</nav>
 		<Button
 			v-if="isOpen"
@@ -49,21 +56,47 @@
 </template>
 
 <script lang="ts" setup>
+import type {ListItem} from "@/types"
+import {useI18n} from "vue-i18n"
 import {cn} from "~/lib/utils"
-import type {PageSection} from "~/types"
 
 const isOpen = ref(false)
+const {t, locale} = useI18n()
 const openMenu = () => (isOpen.value = true)
 const closeMenu = () => (isOpen.value = false)
 const toggleMenu = () => (isOpen.value = !isOpen.value)
 
-const {homeSection, contactSection, danceTherapySection, ourTeamSection} = useContent()
-const pageSections: PageSection[] = [
-	homeSection,
-	danceTherapySection,
-	ourTeamSection,
-	contactSection,
-]
+const languages = ref([
+	{value: "fr", label: t("French")},
+	{value: "en", label: t("English")},
+])
+
+const pages = ref<Array<ListItem & {url: string}>>([
+	{
+		label: "Home",
+		url: "/",
+		id: "home-page",
+	},
+	{
+		label: "About us",
+		url: "/about-us",
+		id: "about-page",
+	},
+	{
+		label: "Get involved",
+		url: "/get-involved",
+		id: "id-page",
+	},
+	{
+		label: "Contact",
+		url: "/contact",
+		id: "contact-page",
+	},
+])
+
+watch(locale, () => {
+	console.log(locale)
+})
 </script>
 
 <style scoped>
