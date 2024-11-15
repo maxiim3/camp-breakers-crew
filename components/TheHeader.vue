@@ -83,8 +83,8 @@ const pages = ref<Array<ListItem & {url: string}>>([
 		id: "about-page",
 	},
 	{
-		label: "Get involved",
-		url: "/get-involved",
+		label: "Help us",
+		url: "/help",
 		id: "id-page",
 	},
 	{

@@ -1,105 +1,49 @@
 <template>
-	<VLayout with-navigation>
-		<h1>{{ $t("Contact us") }}</h1>
-		<TextElement
-		small
-		:content="
-				$t(
-					'Get involved! Whether you have innovative ideas to share, questions about our services, or want to contribute to our community, we would love to hear from you.'
-				)
-			" />
-		<p>
-			{{
-				$t(
-					"Reach out to us through our contact form below or via email. Your input helps us grow and improve our services for everyone."
-				)
-			}}
-		</p>
-		<form @submit.prevent="onSubmit">
-			<div class="p-fluid grid">
-				<div class="field col-12">
-					<label>{{ $t("Name") }}</label>
-					<PrimeInputText
-						v-model="form.name"
-						:class="{'p-invalid': errors.name}" />
-					<small
-						class="p-error"
-						v-if="errors.name"
-						>{{ errors.name }}</small
-					>
-				</div>
-				<div class="field col-12">
-					<label>{{ $t("Email") }}</label>
-					<PrimeInputText
-						v-model="form.email"
-						type="email"
-						:class="{'p-invalid': errors.email}" />
-					<small
-						class="p-error"
-						v-if="errors.email"
-						>{{ errors.email }}</small
-					>
-				</div>
-				<div class="field col-12">
-					<label>{{ $t("Message") }}</label>
-					<PrimeTextarea
-						v-model="form.message"
-						rows="5"
-						:class="{'p-invalid': errors.message}" />
-					<small
-						class="p-error"
-						v-if="errors.message"
-						>{{ errors.message }}</small
-					>
-				</div>
-				<div class="field col-12">
-					<PrimeButton
-						:label="$t('Send Message')"
-						type="submit" />
-				</div>
-			</div>
-		</form>
-	</VLayout>
+  <main class="py-20 px-4">
+    <div class="container mx-auto max-w-2xl">
+      <h1 class="text-4xl font-bold text-neutral-700 text-center mb-12">Contact Us</h1>
+
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <ContactForm />
+      </div>
+
+      <div class="mt-12 text-center">
+        <h2 class="text-2xl font-bold text-neutral-700 mb-4">Follow Us</h2>
+        <div class="flex justify-center space-x-6">
+          <a
+            v-for="social in socials"
+            :key="social.name"
+            :href="social.url"
+            target="_blank"
+            rel="noopener"
+            class="text-neutral-600 hover:text-lime-400 transition-colors"
+          >
+            <component :is="social.icon" class="w-8 h-8" />
+            <span class="sr-only">{{ social.name }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">
-import {reactive, ref} from "vue"
-import {string, pipe, object, minLength, email, safeParse, type InferInput} from "valibot"
+import {
+  InboxIcon,
+  PhoneIcon,
+  VideoCameraIcon
+} from '@heroicons/vue/24/outline'
 
-const ContactSchema = object({
-	name: pipe(string(), minLength(1, "Name is required")),
-	email: pipe(string(), email("Invalid email address")),
-	message: pipe(string(), minLength(1, "Message is required")),
-})
-
-type ContactForm = InferInput<typeof ContactSchema>
-
-const form = reactive<ContactForm>({
-	name: "",
-	email: "",
-	message: "",
-})
-
-const errors = ref({
-	name: "",
-	email: "",
-	message: "",
-})
-
-const onSubmit = () => {
-	const validatedForm = safeParse(ContactSchema, form)
-	if (!validatedForm.success) {
-		validatedForm.issues.forEach(issue => {
-			const path = issue.path?.[0].key as keyof typeof errors.value
-			if (path) {
-				errors.value[path] = issue.message
-			}
-		})
-		return
-	}
-	console.log(validatedForm)
-	// Handle form submission
-}
+const socials = [
+  {
+    name: 'Email',
+    url: 'mailto:campsbreakerz@gmail.com',
+    icon: InboxIcon
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@gazabboy',
+    icon: VideoCameraIcon
+  }
+]
 </script>
-
-<style scoped></style>
