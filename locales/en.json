@@ -1,0 +1,11 @@
+{
+	"hello": "Hello, {name}!",
+	"language": "Language",
+	"Select a language": "Select a language",
+	"Home" : "Home",
+	"About us": "About us",
+	"Get involved": "Get involved",
+	"Contcat": "Contcat",
+	"English" : "English",
+	"French" : "French"
+}
