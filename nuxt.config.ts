@@ -3,22 +3,20 @@ import Aura from "@primevue/themes/aura"
 export default defineNuxtConfig({
 	compatibilityDate: "2024-10-20",
 	devtools: {enabled: true},
-	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module", "@vee-validate/nuxt"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module"],
+	components: [
+		{
+			path: "~/components",
+			pathPrefix: false,
+		},
+	],
 	i18n: {
-		locales: ["en", "fr"],
+		locales: ["en"],
 		defaultLocale: "en",
 		strategy: "prefix_except_default",
 		vueI18n: "./i18n.config.ts",
 	},
-	veeValidate: {
-		autoImports: true,
-		componentNames: {
-			Form: "VeeForm",
-			Field: "VeeField",
-			FieldArray: "VeeFieldArray",
-			ErrorMessage: "VeeErrorMessage",
-		},
-	},
+
 	primevue: {
 		components: {
 			prefix: "Prime",
@@ -39,6 +37,11 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
 	app: {
 		head: {
 			title: "Camps Breakers - Breaking Barriers Through Dance",

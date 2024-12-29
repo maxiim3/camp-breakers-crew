@@ -10,6 +10,7 @@ declare module 'vue' {
     PrimeButton: typeof import('primevue/button')['default']
     PrimeCard: typeof import('primevue/card')['default']
     PrimeDialog: typeof import('primevue/dialog')['default']
+    PrimeGalleria: typeof import('primevue/galleria')['default']
     PrimeInputText: typeof import('primevue/inputtext')['default']
     PrimeKnob: typeof import('primevue/knob')['default']
     PrimeSelect: typeof import('primevue/select')['default']

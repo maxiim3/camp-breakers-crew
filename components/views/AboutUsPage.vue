@@ -119,5 +119,3 @@ function openDetails(item: Event) {
 	visible.value = true
 }
 </script>
-
-<style scoped></style>

@@ -21,18 +21,18 @@
 							: item.url === ''
 					"
 					:href="{path: item.url}"
-					class="relative opacity-90 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-cyan-400 after:content-[''] hover:opacity-100 text-sm hover:after:scale-x-100 aria-selected:font-bold aria-selected:after:scale-x-100"
+					class="relative text-sm opacity-90 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-cyan-400 after:content-[''] hover:opacity-100 hover:after:scale-x-100 aria-selected:font-bold aria-selected:after:scale-x-100"
 					@click="closeMenu">
-					{{ $t(item.label) }}
+					{{ item.label }}
 				</NuxtLink>
 			</VList>
-			<PrimeSelect
+			<!-- <PrimeSelect
 				v-model="$i18n.locale"
 				:options="languages"
 				optionLabel="label"
 				optionValue="value"
 				:placeholder="$t('Select a language')"
-				class="w-full max-w-28 text-xs md:w-56" />
+				class="w-full max-w-28 text-xs md:w-56" /> -->
 		</nav>
 		<Button
 			v-if="isOpen"
@@ -66,37 +66,33 @@ const openMenu = () => (isOpen.value = true)
 const closeMenu = () => (isOpen.value = false)
 const toggleMenu = () => (isOpen.value = !isOpen.value)
 
-const languages = ref([
-	{value: "fr", label: t("French")},
-	{value: "en", label: t("English")},
-])
+// const languages = ref([
+// 	{value: "fr", label: t("French")},
+// 	{value: "en", label: t("English")},
+// ])
 
 const pages = ref<Array<ListItem & {url: string}>>([
 	{
-		label: "Home",
+		label: t("Home"),
 		url: "/",
 		id: "home-page",
 	},
 	{
-		label: "About us",
+		label: t("About us"),
 		url: "/about-us",
 		id: "about-page",
 	},
 	{
-		label: "Help us",
+		label: t("Help us"),
 		url: "/help",
 		id: "id-page",
 	},
 	{
-		label: "Contact",
+		label: t("Contact"),
 		url: "/contact",
 		id: "contact-page",
 	},
 ])
-
-watch(locale, () => {
-	console.log(locale)
-})
 </script>
 
 <style scoped>

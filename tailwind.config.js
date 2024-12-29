@@ -1,10 +1,10 @@
-const animate = require("tailwindcss-animate")
-const tailwindPreimui = require("tailwindcss-primeui")
+import twPrimeUI from "tailwindcss-primeui"
+import animate from "tailwindcss-animate"
+import daisyUI from "daisyui"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	prefix: "",
-
 	theme: {
 		container: {
 			center: true,
@@ -14,41 +14,6 @@ module.exports = {
 			},
 		},
 		extend: {
-			colors: {
-				border: "hsl(var(--border))",
-				input: "hsl(var(--input))",
-				ring: "hsl(var(--ring))",
-				background: "hsl(var(--background))",
-				foreground: "hsl(var(--foreground))",
-				primary: {
-					DEFAULT: "hsl(var(--primary))",
-					foreground: "hsl(var(--primary-foreground))",
-				},
-				secondary: {
-					DEFAULT: "hsl(var(--secondary))",
-					foreground: "hsl(var(--secondary-foreground))",
-				},
-				destructive: {
-					DEFAULT: "hsl(var(--destructive))",
-					foreground: "hsl(var(--destructive-foreground))",
-				},
-				muted: {
-					DEFAULT: "hsl(var(--muted))",
-					foreground: "hsl(var(--muted-foreground))",
-				},
-				accent: {
-					DEFAULT: "hsl(var(--accent))",
-					foreground: "hsl(var(--accent-foreground))",
-				},
-				popover: {
-					DEFAULT: "hsl(var(--popover))",
-					foreground: "hsl(var(--popover-foreground))",
-				},
-				card: {
-					DEFAULT: "hsl(var(--card))",
-					foreground: "hsl(var(--card-foreground))",
-				},
-			},
 			borderRadius: {
 				xl: "calc(var(--radius) + 4px)",
 				lg: "var(--radius)",
@@ -81,5 +46,33 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [animate, tailwindPreimui],
+	plugins: [animate, twPrimeUI, daisyUI],
+	daisyui: {
+		themes: [
+			{
+				custom: {
+					primary: "#AF9D24",
+					"primary-content": "#0b0900",
+					secondary: "#0f7c3f",
+					"secondary-content": "#d3e4d7",
+					accent: "#37cadd",
+					"accent-content": "#010f11",
+					neutral: "#3e383b",
+					"neutral-content": "#d5d3d4",
+					"base-100": "#232323",
+					"base-200": "#1d1d1d",
+					"base-300": "#171717",
+					"base-content": "#000000",
+					info: "#eeeeee",
+					"info-content": "#141414",
+					success: "#86efac",
+					"success-content": "#06140b",
+					warning: "#facc15",
+					"warning-content": "#150f00",
+					error: "#e81c24",
+					"error-content": "#130000",
+				},
+			},
+		],
+	},
 }

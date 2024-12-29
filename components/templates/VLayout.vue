@@ -1,5 +1,4 @@
 <template>
-	<TheHeader v-if="withNavigation" />
 	<main class="px-1 md:px-8 lg:px-24 py-28 lg:py-40">
 		<slot />
 	</main>
