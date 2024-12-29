@@ -7,6 +7,16 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    PrimeButton: typeof import('primevue/button')['default']
+    PrimeCard: typeof import('primevue/card')['default']
+    PrimeDialog: typeof import('primevue/dialog')['default']
+    PrimeGalleria: typeof import('primevue/galleria')['default']
+    PrimeInputText: typeof import('primevue/inputtext')['default']
+    PrimeKnob: typeof import('primevue/knob')['default']
+    PrimeSelect: typeof import('primevue/select')['default']
+    PrimeTextarea: typeof import('primevue/textarea')['default']
+    PrimeTimeline: typeof import('primevue/timeline')['default']
+    PrimeTimeLine: typeof import('primevue/timeline')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
