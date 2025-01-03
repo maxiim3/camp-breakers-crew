@@ -14,6 +14,10 @@ module.exports = {
 			},
 		},
 		extend: {
+		fontFamily: {
+			brand: ['TTOctosquares', 'sans-serif'],
+			brandMono: ['Ubuntu Mono', 'monospace']
+		},
 			borderRadius: {
 				xl: "calc(var(--radius) + 4px)",
 				lg: "var(--radius)",
