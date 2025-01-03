@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--font-brand: "TTOctosquares";
+	--font-mono: "Ubuntu Mono";
+}
+
+@font-face {
+	font-family: var(--brand);
+	src: url("/fonts/TypeType Octosquares Variable.ttf") format("truetype-variations");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 * {
 	scroll-behavior: smooth;
 }
@@ -64,4 +77,17 @@
 
 .animation-title {
 	animation: revealFromLeft 2s 0.3s cubic-bezier(0.25, 1, 0.3, 1) both;
+}
+
+/* ************************************** */
+/*       Override DaisyUI Border radius         */
+.modal,
+.modal-middle,
+.modal-borrom {
+	.modal-box {
+		border-radius: 0.5rem;
+		max-width: 60rem;
+		width: 100%;
+		@apply sm:max-w-2xl
+	}
 }

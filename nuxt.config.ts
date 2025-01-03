@@ -1,9 +1,9 @@
 import Aura from "@primevue/themes/aura"
 
 export default defineNuxtConfig({
-	compatibilityDate: "2024-10-20",
+  compatibilityDate: "2024-10-20",
 	devtools: {enabled: true},
-	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module", "@nuxt/image",  "@nuxt/scripts"],
 	components: [
 		{
 			path: "~/components",
