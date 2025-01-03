@@ -1,43 +1,49 @@
 <template>
 	<section
-		id="food-basket"
-		class="relative py-12 bg-neutral-50/90 pb-8 pt-20 backdrop-blur-sm"
+		id="contact"
+		class="relative bg-neutral-50/90 py-12 pb-8 pt-20 backdrop-blur-sm"
 	>
 		<div class="container mx-auto">
-			<h2 class="mb-8 text-center text-xl font-black">
+			<h2 class="mb-4 text-center text-xl font-black">
 				{{ $t("Contacts") }}
 			</h2>
-			<NuxtLink
-				class="flex items-center gap-2"
-				:to="socials[0].url"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+			<div class="flex items-center justify-center gap-2">
+				<NuxtLink
+				target="_blank"
+				rel="noopener noreferrer"
+					class="flex items-center gap-2"
+					:to="socials[0].url"
 				>
-					<rect
-						width="20"
-						height="16"
-						x="2"
-						y="4"
-						rx="2"
-					/>
-					<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-				</svg>
-				Contact us
-			</NuxtLink>
-			<h2 class="mb-8 text-center text-xl font-black">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<rect
+							width="20"
+							height="16"
+							x="2"
+							y="4"
+							rx="2"
+						/>
+						<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+					</svg>
+					Contact us
+				</NuxtLink>
+			</div>
+			<h2 class="mt-8 mb-4 text-center text-xl font-black">
 				{{ $t("Follow us") }}
 			</h2>
-			<div class="flex flex-col gap-4">
+			<div class="flex items-center justify-center gap-2">
 				<NuxtLink
+				target="_blank"
+				rel="noopener noreferrer"
 					class="flex items-center gap-2"
 					:to="socials[1].url"
 				>
@@ -60,8 +66,10 @@
 					Youtube
 				</NuxtLink>
 				<NuxtLink
+				target="_blank"
+				rel="noopener noreferrer"
 					class="flex items-center gap-2"
-					to="foo"
+					to="https://www.instagram.com/campsbreakerz/?hl=en"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +101,10 @@
 					Instagram
 				</NuxtLink>
 				<NuxtLink
+				target="_blank"
+				rel="noopener noreferrer"
 					class="flex items-center gap-2"
-					to="foo"
+					to="https://www.facebook.com/CampsBreakerz/"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -112,8 +122,10 @@
 					Facebook
 				</NuxtLink>
 				<NuxtLink
+				target="_blank"
+				rel="noopener noreferrer"
 					class="flex items-center gap-2"
-					to="foo"
+					to="https://linktr.ee/cbcrewgf"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
