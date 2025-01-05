@@ -1,7 +1,7 @@
 <template>
 	<section
 		id="food-basket"
-		class="relative min-h-screen bg-base-300/90 pb-8 pt-20 backdrop-blur-sm"
+		class="relative min-h-screen bg-base-300/90 pt-20 pb-32 backdrop-blur-sm"
 	>
 		<div class="container mx-auto">
 			<h2 class="mb-8 text-center text-xl font-black text-white">
