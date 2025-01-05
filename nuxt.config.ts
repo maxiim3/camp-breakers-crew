@@ -4,12 +4,16 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-10-20",
 	devtools: {enabled: true},
 	modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@primevue/nuxt-module", "@nuxt/image",  "@nuxt/scripts"],
-	components: [
+	components: {
+	dirs: [
 		{
 			path: "~/components",
 			pathPrefix: false,
+			global: true
 		},
-	],
+	 ],
+	},
+
 	i18n: {
 		locales: ["en"],
 		defaultLocale: "en",
