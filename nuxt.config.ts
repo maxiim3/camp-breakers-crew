@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   },
 	app: {
 		head: {
-			title: "Camps Breakers - Breaking Barriers Through Dance",
+			title: "Camps Breakers Palestine",
 			meta: [
 				{charset: "utf-8"},
 				{name: "viewport", content: "width=device-width, initial-scale=1"},
